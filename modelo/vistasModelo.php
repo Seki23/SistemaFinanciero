@@ -1,7 +1,7 @@
 <?php 
 class vistasModelo{
 	protected function obtener_vistas_modelo($vistas){
-        $listaVistas=["inicio","fiador","tablaFiador"];
+        $listaVistas=["inicio","fiador","tablaFiador","clientes"];
 
          
        if(in_array($vistas,$listaVistas)){

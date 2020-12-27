@@ -94,6 +94,3 @@
         }).prop('checked', false);
 
     </script>
-
-  // AJAX
-<script type="text/javascript" src="<?php echo SERVERURL; ?>ajax/fiador.js"></script>  

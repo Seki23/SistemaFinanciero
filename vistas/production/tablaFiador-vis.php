@@ -16,7 +16,7 @@
               <div class="col-md-12 col-sm-12 ">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Responsive example<small>Users</small></h2>
+                    <h2>Lista de fiadores</h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <form action="<?php echo SERVERURL; ?>fiador/">             
                      <button type="submit" class="btn btn-info "><span class='fa fa-plus'></span>Nuevo</button>

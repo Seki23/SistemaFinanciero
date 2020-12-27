@@ -1,7 +1,7 @@
   <div class="col-md-3 left_col">
         <div class="left_col scroll-view">
           <div class="navbar nav_title" style="border: 0;">
-            <a href="index3.html" class="site_title"><i class="fa fa-paw"></i> <span>Comercial!</span></a>
+            <a href="<?php echo SERVERURL; ?>/inicio/" class="site_title"><i class="fa fa-paw"></i> <span>Comercial!</span></a>
           </div>
 
           <div class="clearfix"></div>
@@ -25,11 +25,17 @@
             <div class="menu_section">
               <h3>General</h3>
               <ul class="nav side-menu">
+                <li><a><i class="fa fa-user"></i>Clientes<span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu">
+                       <li><a href="<?php echo SERVERURL; ?>tablaFiador/">Fiadores</a></li>
+                    <li><a href="<?php echo SERVERURL; ?>tablaClientes/"">Clientes</a></li>
+                    
+                  </ul>
+                </li>
                 <li><a><i class="fa fa-edit"></i>Cuentas por cobrar <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
                     <li><a href="form_advanced.html">Cartera</a></li>
                     <li><a href="form_validation.html">Categoria cliente</a></li>
-                       <li><a href="<?php echo SERVERURL; ?>/fiador/">Fiador</a></li>
                     <li><a href="form_validation.html">Registrar pago</a></li>
                     
                   </ul>

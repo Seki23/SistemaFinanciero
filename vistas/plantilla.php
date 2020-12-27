@@ -54,6 +54,7 @@ else:
   </div>
 
    <?php include "build/scripts.php"; ?>
+   <?php include "build/ajaxScript.php"; ?>
 
 
 </body>

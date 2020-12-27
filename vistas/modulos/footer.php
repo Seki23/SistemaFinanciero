@@ -1,7 +1,7 @@
  <!-- footer content -->
     <footer>
       <div class="pull-right">
-        Comercial - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+        Comercial - todos los derechos reservados
       </div>
       <div class="clearfix"></div>
     </footer>
