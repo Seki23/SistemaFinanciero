@@ -41,7 +41,7 @@
         {"data": "profesion"},
         {"data": "salario"},
         {"data": "telefono_fiador"},
-        {"defaultContent": "<div class='text-center'><div class='btn-group'> <button  class=' deleteF btn btn-danger'><span class='fa fa-trash'></span></button><button class='editF btn btn-warning ' ><span class='fa fa-pencil'></span></button>  </div></div>"}
+        {"defaultContent": "<div class='text-center'><div class='btn-group'> <button  class=' infoF btn btn-primary'><span class='fa fa-info'></span></button><button class='editF btn btn-warning ' ><span class='fa fa-pencil'></span></button>  </div></div>"}
     ]
 }); 
 
@@ -140,14 +140,14 @@ $(document).on('click','.deleteF',function(){
           console.log(response);
             const fiador=JSON.parse(response);
             $('#idF').val(fiador.id);
-            $('#nombreF').val(fiador.nombre),
-                  $('#direccionF').val(fiador.direccion),
-             $('#duiF').val(fiador.dui),
-             $('#nitF').val(fiador.nit),
-                  $('#profesionF').val(fiador.profesion),
-                  $('#telefonoF').val(fiador.telefono),
-                $('#sueldoF').val(fiador.sueldo),
-                $('#correoF').val(fiador.correo)
+            $('#nombreF').val(fiador.nombre);
+                  $('#direccionF').val(fiador.direccion);
+             $('#duiF').val(fiador.dui);
+             $('#nitF').val(fiador.nit);
+                  $('#profesionF').val(fiador.profesion);
+                  $('#telefonoF').val(fiador.telefono);
+                $('#sueldoF').val(fiador.sueldo);
+                $('#correoF').val(fiador.correo);
          });
       });
 
@@ -202,7 +202,7 @@ $(document).on('click','.deleteF',function(){
     })
     e.preventDefault();
    
-       });
+  });
      
 
 

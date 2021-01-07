@@ -28,6 +28,15 @@ if($vistasR=="login" || $vistasR=="404"):
   }
   
 else:
+
+  session_start(['name'=>'SC']);
+  // $peticionAjax=true;
+   require_once "./controlador/loginControlador2.php";
+   $lc = new loginControlador2();
+   if(!isset($_SESSION['usuario'])){
+   echo $lc->cierre_sesion();
+   }
+
  ?>
 
 
