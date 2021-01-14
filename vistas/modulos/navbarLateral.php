@@ -62,9 +62,9 @@
                 <li><a><i class="fa fa-building"></i>Activo fijo<span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
                     <li><a href="<?php echo SERVERURL; ?>tablaActivos/">Activos</a></li>
-                    <li><a href="tables.html">Tipo activo</a></li>
-                    <li><a href="tables_dynamic.html">departamentos</a></li>
-                    <li><a href="tables_dynamic.html">Institucion</a></li>
+                    <li><a href="<?php echo SERVERURL; ?>tablaTipoactivo/">Tipo activo</a></li>
+                    <li><a href="<?php echo SERVERURL; ?>tablaDepartamento/">Departamentos</a></li>
+                 
                   </ul>
                 </li>
                 <li><a><i class="fa fa-bar-chart-o"></i>Estadísticas<span class="fa fa-chevron-down"></span></a>
@@ -79,10 +79,19 @@
                       <ul class="nav child_menu">
                         <li><a>Empleados<span class="fa fa-chevron-down"></span></a>
                           <ul class="nav child_menu">
-                            <li><a href="#level2_1">Empleados</a>
+                            <li><a href="<?php echo SERVERURL; ?>tablaEmpleado/">Empleados</a>
+                            </li>
+                            <li><a href="<?php echo SERVERURL; ?>tablaComision/">Comisiones</a>
                             </li>
                             <li><a href="<?php echo SERVERURL; ?>usuarios/">Usuarios</a>
                             </li>
+                          </ul>
+                        </li>
+                         <li><a>Interes<span class="fa fa-chevron-down"></span></a>
+                          <ul class="nav child_menu">
+                            <li><a href="<?php echo SERVERURL; ?>tablaInteres/">Tasa de Interes</a>
+                            </li>
+                            
                           </ul>
                         </li>
                         <li><a href="#level1_2">Cargos</a>
