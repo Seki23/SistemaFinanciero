@@ -34,7 +34,7 @@
                                         <div class="field item form-group">
                                             <label class="col-form-label col-md-3 col-sm-3  label-align">NIT<span class="required">*</span></label>
                                             <div class="col-md-6 col-sm-6">
-                                               <input class="form-control" id="nitF"  data-validate-length-range="17" data-validate-words="1" name="name" placeholder="00-000000-000-0"  data-inputmask="'mask' : '99-999999-999-9'" required="required" /></div>
+                                               <input class="form-control" id="nitF"  data-validate-length-range="17" data-validate-words="1" name="name" placeholder="0000-000000-000-0"  data-inputmask="'mask' : '9999-999999-999-9'" required="required" /></div>
                                         </div>
                                         <div class="field item form-group">
                                             <label class="col-form-label col-md-3 col-sm-3  label-align">Profesión<span class="required">*</span></label>

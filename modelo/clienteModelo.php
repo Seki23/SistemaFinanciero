@@ -60,7 +60,7 @@ class clienteModelo {
     }
 
     protected function modificar_ClienteModelo($datos){
-      $sql=conectar()->prepare("UPDATE clientes SET nombrecliente=:nombre,direccion=:direccion,dui=:dui,lugartrabajo=:lugartrabajo,salario=:sueldo,gastos=:gastos,telefono=:telefono WHERE idcliente=:Id");
+      $sql=conectar()->prepare("UPDATE clientes SET nombrecliente=:nombre,direccion=:direccion,dui=:dui,lugartrabajo=:lugartrabajo,salario=:sueldo,gastos=:gastos,telefono=:telefono,idcarteraclientes=:cartera  WHERE idcliente=:Id");
            $sql->bindParam(":nombre",$datos['nombre']);
            $sql->bindParam(":direccion",$datos['direccion']);
            $sql->bindParam(":dui",$datos['dui']); 
@@ -68,6 +68,7 @@ class clienteModelo {
            $sql->bindParam(":gastos",$datos['gastos']);
            $sql->bindParam(":sueldo",$datos['sueldo']);
            $sql->bindParam(":telefono",$datos['telefono']);
+           $sql->bindParam(":cartera",$datos['cartera']);
            $sql->bindParam(":Id",$datos['Id']);
            $sql->execute();
            return $sql;

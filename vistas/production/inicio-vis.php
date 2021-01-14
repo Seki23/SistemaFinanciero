@@ -22,9 +22,20 @@ if($cargo =="Administrador"){
         <div class="row" style="display: inline-block;">
           <div class="tile_count">
             <div class="col-md-2 col-sm-4  tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Total Users</span>
-              <div class="count">2500</div>
-              <span class="count_bottom"><i class="green">4% </i> From last Week</span>
+              <span class="count_top"><i class="fa fa-shopping-cart"></i>Ventas Totales</span>
+
+              <?php 
+                  //  include "./core/conexion.php";
+                    $consulta  = ejecutar_consulta_simple("SELECT COUNT(idventa) as numventa FROM venta");
+                    if($consulta->rowCount()>=1){
+                      $consulta=$consulta->fetch(PDO::FETCH_ASSOC);
+                      $num=$consulta['numventa'];
+                   }else{
+                       $num="error";
+                    }
+                ?>
+            <div class="count"><?php echo $num; ?></div>
+              <span class="count_bottom"><i class="green"></i>Ventas de la empresa</span>
             </div>
             <div class="col-md-2 col-sm-4  tile_stats_count">
               <span class="count_top"><i class="fa fa-clock-o"></i> Average Time</span>

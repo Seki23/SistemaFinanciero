@@ -10,9 +10,10 @@ class activoControlador extends activoModelo{
        $departamento=$_POST['departamento'];
 
 
-       $buscarUltimoCorr=ejecutar_consulta_simple("SELECT ac.correlativo FROM activos as ac  ORDER BY ac.idactivos DESC LIMIT 1");
+       $buscarUltimoCorr=ejecutar_consulta_simple("SELECT ac.correlativo FROM activos as ac WHERE ac.idtipo='$tipo' AND ac.iddepartamento='$departamento' ORDER BY ac.idactivos DESC LIMIT 1");
        $buscarTipo=ejecutar_consulta_simple("SELECT ta.correlativo FROM tipoactivo as ta WHERE ta.idtipoactivo='$tipo'");
        $buscarDpto=ejecutar_consulta_simple("SELECT dp.correlativo FROM departamento AS dp WHERE dp.iddepartamento = '$departamento'");
+       
        
 
        if($buscarUltimoCorr->rowCount()>=1){
@@ -23,13 +24,14 @@ class activoControlador extends activoModelo{
         $buscarDpto=$buscarDpto->fetch(PDO::FETCH_ASSOC);
         $UltimoDpto=$buscarDpto['correlativo'];
 
-        $numZeros= substr_count($Ultimo[3], '0');  //cuenta el numero de cero 
         $suma=$Ultimo[3] + 1;  //realiza la suma 
+        $numZeros= strlen ($suma);//cuenta el numero de caracteres
         $resultado;            //lleva el valor del correlativo
+
         if($numZeros==1){   //condiciones segun el numero de zero
-          $resultado =$UltimoDpto."-".$UltimoTipo."-". "0".$suma;
+          $resultado =$UltimoDpto."-".$UltimoTipo."-". "00".$suma;
         }elseif($numZeros==2){
-            $resultado=$UltimoDpto."-".$UltimoTipo."-". "00".$suma;
+            $resultado=$UltimoDpto."-".$UltimoTipo."-". "0".$suma;
         }else{
            $resultado=$UltimoDpto."-".$UltimoTipo."-". $suma;
         }

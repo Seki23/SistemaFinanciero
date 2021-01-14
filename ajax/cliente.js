@@ -1,5 +1,7 @@
 //MOSTRAR DATOS EN TABLA
- 
+
+
+
  //MOSTRAR DATOS EN TABLA
  let mostrar=1;
  tablaCliente = $('#tabla-cliente').DataTable({  
@@ -46,13 +48,20 @@
     ]
 }); 
 
-$(document).on('click','.editC',function(){
 
+
+
+
+
+
+//EDITAR PARA SETEAR
+$(document).on('click','.editC',function(){
   $("#ModalCliente").modal("show");
+  listarCarteras();
   let fila = $(this).closest("tr"); 
     let idCliente= parseInt(fila.find('td:eq(0)').text()); 
   $.post('../controlador/clienteControlador.php',{idCliente},function(response){
-    console.log(response);
+   console.log(response);
       const cliente=JSON.parse(response);
 
       let tipoCliente=cliente.tipocliente;
@@ -77,7 +86,27 @@ $(document).on('click','.editC',function(){
             $('#sueldoClieM').val(cliente.salario);
           $('#gastosClieM').val(cliente.gastos);
           $('#idClienteM').val(cliente.id);
+        
+          $('#CombocarteraCliente').val(cliente.idcarteraclientes);
    });
+
+
+   function listarCarteras() {
+    $.ajax({
+      url: "../controles/carteraControl.php",
+      type: "POST",
+      success: function (response) {
+         console.log(response);
+        let tasks = JSON.parse(response);
+        let template = '';
+        tasks.forEach((task) => {
+          template += `  <option value="${task.id}">${task.cartera}</option>  `;
+        });
+        $("#CombocarteraCliente").html(template);
+      },
+    });
+  }
+
 
 });
 //MODIFICAR
@@ -106,11 +135,12 @@ $(document).on('click','.editC',function(){
             lugartrabajo:$('#profesionClieM').val(),
             sueldo:$('#sueldoClieM').val(),
             telefono:$('#telefonoClieM').val(),
-            gastos:$('#gastosClieM').val()
+            gastos:$('#gastosClieM').val(),
+            cartera:$('#CombocarteraCliente').val()
        
    };
 
- //  console.log(postData);
+  console.log(postData);
     
          let url='../controlador/clienteControlador.php';
        $.post(url,postData,function(response){

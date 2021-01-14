@@ -173,7 +173,7 @@ public function agregar_informacionFinanciera(){
 
 public function UnicoCliente($id){
      
-  $consulta = "SELECT idcliente,tipocliente,nombrecliente,direccion,dui,lugartrabajo,salario,gastos,telefono FROM clientes WHERE idcliente='$id'";
+  $consulta = "SELECT idcliente,tipocliente,nombrecliente,direccion,dui,lugartrabajo,salario,gastos,telefono,idcarteraclientes FROM clientes WHERE idcliente='$id'";
   $conexion=conectar();
      $datos=$conexion->query($consulta);
      $datos=$datos->fetchAll();
@@ -188,6 +188,7 @@ public function UnicoCliente($id){
     "telefono"=>$row['telefono'],
     "salario"=>$row['salario'],
     "gastos"=>$row['gastos'],
+    "idcarteraclientes"=>$row['idcarteraclientes'],
     "id"=>$row['idcliente']
     );
   }
@@ -255,6 +256,7 @@ public function mostrar_cliente(){
   $telefono=$_POST['telefono'];
   $sueldo=$_POST['sueldo'];
   $Id=$_POST['Id'];
+  $cartera=$_POST['cartera'];
   
   if($gastos==""){
 
@@ -266,6 +268,7 @@ public function mostrar_cliente(){
       "gastos"=>null,
       "sueldo"=>null,
       "telefono"=>$telefono,
+      "cartera"=>$cartera,
       "Id"=>$Id
   ];
   
@@ -296,6 +299,7 @@ public function mostrar_cliente(){
       "gastos"=>$gastos,
       "sueldo"=>$sueldo,
       "telefono"=>$telefono,
+      "cartera"=>$cartera,
       "Id"=>$Id
   ];
   

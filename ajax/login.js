@@ -21,10 +21,7 @@ $('#login').submit(function(e){
                     alerta.Tipo
                   );
             }    
-
-          
-      
-         });
+      });
     
     e.preventDefault();
  }); 

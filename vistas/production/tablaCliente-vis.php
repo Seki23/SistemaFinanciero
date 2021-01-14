@@ -115,6 +115,17 @@
                                                 <input class="form-control" type="number" id="gastosClieM" name="gastosClie" class='sal' name="sueldo" data-validate-length-range="2,10" placeholder="00000000000.00" /></div>
                                         </div>
                                   
+                                        <div class="field item form-group">
+                                            <label class="col-form-label col-md-3 col-sm-3  label-align">Cartera<span class="required">*</span></label>
+                                            <div class="col-md-9 col-sm-6">
+                                            <select  id="CombocarteraCliente" name="CombocarteraCliente" class="form-control " required="required" >
+                                              
+                                             </select>
+                                              
+                                                </div>
+                                         </div>
+
+
                                      
                                         <div class="ln_solid">
                                             <div class="form-group">
