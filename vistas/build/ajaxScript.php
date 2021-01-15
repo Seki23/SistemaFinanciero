@@ -17,3 +17,11 @@
   <script type="text/javascript" src="<?php echo SERVERURL; ?>ajax/carterac.js"></script>  
 
  <script type="text/javascript" src="<?php echo SERVERURL; ?>ajax/comisionControlador.js"></script>
+
+ <script type="text/javascript" src="<?php echo SERVERURL; ?>ajax/cargo.js"></script>  
+<script type="text/javascript" src="<?php echo SERVERURL; ?>ajax/proveedor.js"></script> 
+<script type="text/javascript" src="<?php echo SERVERURL; ?>ajax/categoriaproducto.js"></script> 
+<script type="text/javascript" src="<?php echo SERVERURL; ?>ajax/catalogoactivos.js"></script> 
+<script type="text/javascript" src="<?php echo SERVERURL; ?>ajax/categoria.js"></script> 
+<script type="text/javascript" src="<?php echo SERVERURL; ?>ajax/provee.js"></script>
+<script type="text/javascript" src="<?php echo SERVERURL; ?>ajax/producto.js"></script> 

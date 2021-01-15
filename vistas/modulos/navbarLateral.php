@@ -52,9 +52,9 @@
                 </li>
                 <li><a><i class="fa fa-cubes"></i>Inventario <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
-                    <li><a href="general_elements.html">Categoria producto</a></li>
-                    <li><a href="typography.html">Productos</a></li>
-                    <li><a href="media_gallery.html">Proveedor</a></li>
+                    <li><a href="<?php echo SERVERURL; ?>tablaCategoriaProducto/">Categoria producto</a></li>
+                    <li><a href="<?php echo SERVERURL; ?>tablaProductos/">Productos</a></li>
+                    <li><a href="<?php echo SERVERURL; ?>tablaProveedor/">Proveedor</a></li>
                     <li><a href="media_gallery.html">Compras</a></li>
                     <li><a href="typography.html">Venta</a></li>
                   </ul>
@@ -62,6 +62,7 @@
                 <li><a><i class="fa fa-building"></i>Activo fijo<span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
                     <li><a href="<?php echo SERVERURL; ?>tablaActivos/">Activos</a></li>
+                    <li><a href="<?php echo SERVERURL; ?>tablaCatalogoActivos/">Catalogo de activos</a></li>
                     <li><a href="<?php echo SERVERURL; ?>tablaTipoactivo/">Tipo activo</a></li>
                     <li><a href="<?php echo SERVERURL; ?>tablaDepartamento/">Departamentos</a></li>
                  
@@ -94,7 +95,7 @@
                             
                           </ul>
                         </li>
-                        <li><a href="#level1_2">Cargos</a>
+                        <li><a href="<?php echo SERVERURL; ?>tablaCargo/">Cargos</a>
                         </li>
                       </ul>
                     </li>

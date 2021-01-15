@@ -1,5 +1,4 @@
   let OOpcion=1;  
-
   tablaCargos = $('#tableCargoss').DataTable({ 
     language: {
       processing: "Tratamiento en curso...",
