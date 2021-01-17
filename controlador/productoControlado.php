@@ -40,11 +40,51 @@ class productoControlador extends productoModelo{
 
 	         $guardarProducto=productoModelo::agregar_productoModelo($datosProductos);
              if($guardarProducto->rowCount()>=1){
-              $alerta=[
+
+               //GUARDAR KARDEX INICIAL
+
+   $buscarProducto=ejecutar_consulta_simple("SELECT p.idproducto,p.preciocompra,p.stock,p.codigo FROM producto AS p WHERE p.codigo ='$codiproducto'");
+          if($buscarProducto->rowCount()>=1){
+                $buscarProducto=$buscarProducto->fetch(PDO::FETCH_ASSOC);
+                $idproducto= $buscarProducto['idproducto'];
+                 $precioUni= $buscarProducto['preciocompra'];
+                $stockPro= $buscarProducto['stock'];
+                $fecha= date('Y-n-j');
+                $movimiento=1;
+                $descripcion="Primer registro de producto";
+                $totalesN=$precioUni * $stockPro;
+
+  $datoskardex=[
+                  'fecha'=>$fecha,
+                  'producto'=>$idproducto,
+                  'descripcion'=>$descripcion,
+                  'movimiento'=>$movimiento,
+                  'cantidad'=>$stockPro,
+                  'precio'=>$precioUni,
+                  'cantidades'=>$stockPro,
+                  'total'=>$totalesN,
+              ];
+
+       $guardarKardex=productoModelo::agregar_KardexModelo($datoskardex);
+                   if($guardarKardex->rowCount()>=1){
+                      $alerta=[
                       "Titulo"=>"Registrado",
                       "Texto"=>"Producto registrado con exito",
                       "Tipo"=>"success"
                   ];
+
+                   }else{
+                      $alerta=[
+                      "Titulo"=>"Error",
+                      "Texto"=>"error al guardar kardex",
+                      "Tipo"=>"error"
+                  ];
+
+                   }
+
+          }
+
+            
               
                 }else{
                  $alerta=[

@@ -103,16 +103,16 @@ class ventaControlador extends ventaModelo{
             $limpiarCarrito=ejecutar_consulta_simple("DELETE FROM carrito");        
 
 //AGREGAR KARDEX
-            /* $fecha= date('Y-n-j');
+            $fecha= date('Y-n-j');
              $movimiento=2;
              $descripcion="Venta de producto";
             
-    $registroKardex=ejecutar_consulta_simple("SELECT k.cantidades , k.vtotales FROM kardex AS k WHERE k.idproductos=$idPro");
+$registroKardex=ejecutar_consulta_simple("SELECT k.fecha,k.vunitario, k.cantidades , k.vtotales FROM kardex AS k WHERE k.idproductos=$idPro AND k.movimiento=1 ORDER BY k.fecha ASC LIMIT 1 ");
      $registroKardex=$registroKardex->fetch(PDO::FETCH_ASSOC);
         $CantidadesKardex= $registroKardex['cantidades'];
         $totalesKardex= $registroKardex['vtotales'];
 
-        $totalV= $row['precioventa'] * $row['cantidad'];
+        $totalV= $registroKardex['vunitario'] * $row['cantidad'];
 
          $cantidadesN=$CantidadesKardex  - $row['cantidad'];
          $totalesN=$totalesKardex - $totalV ;
@@ -124,7 +124,7 @@ class ventaControlador extends ventaModelo{
                   'descripcion'=>$descripcion,
                   'movimiento'=>$movimiento,
                   'cantidad'=>$row['cantidad'],
-                  'precio'=>$row['precioventa'],
+                  'precio'=>$registroKardex['vunitario'],
                   'cantidades'=>$cantidadesN,
                   'total'=>$totalesN,
               ];
@@ -135,7 +135,7 @@ class ventaControlador extends ventaModelo{
                     echo "kardex agregada";
                   }else{
                     echo "falla al agregar kardex";
-                  }*/
+                  }
 
  
                 }else{

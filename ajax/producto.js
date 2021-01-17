@@ -156,8 +156,8 @@ $('#form-producto').submit(function(e){
               processData: false,
               contentType: false,
             }).done(function (resp) {
-               let alerta =JSON.parse(resp);
                console.log(resp);
+               let alerta =JSON.parse(resp);
               Swal.fire(
                    alerta.Titulo,
                    alerta.Texto,
