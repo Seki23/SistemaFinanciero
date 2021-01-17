@@ -226,7 +226,7 @@ if (idproducto > 0) {
       id: i,
       nomprodu: idproducto,
       cantidad: cantidad,
-      //precio: precio,
+      precio: preciocosto,
       total: total,
     });
     $("#tablaCompraDet tr:first").after(fila);
