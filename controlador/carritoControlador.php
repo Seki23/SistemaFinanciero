@@ -9,21 +9,56 @@ public function agregar_carritoControlador(){
 	    $cantidad=$_POST['cantidad'];
 	    $producto=$_POST['idproducto'];
 	        
-		  $datosProducto=[
-		        "producto"=>$producto,
-		        "cantidad"=>$cantidad,
-		   ];
+		
+       //COMPARAR CANTIDAD  SEA MENOR AL STOCK
+      //SI EL PRODUCTO YA SE ENCUENTRA EN CARRITO UNICAMENTE AUNMENTAR LA CANTIDAD
+             $stockExistente=ejecutar_consulta_simple("SELECT stock FROM producto WHERE idproducto=$producto");
+             $stockExistente=$stockExistente->fetch(PDO::FETCH_ASSOC);
+             $stockActual= $stockExistente['stock'];
 
-	  $addCarrito=carritoModelo::agregar_carritoModelo($datosProducto);
+        if($stockActual <$cantidad){
+
+         echo "stock no suficiente";
+
+        }else{
+
+     
+     $existe=ejecutar_consulta_simple("SELECT idproducto,cantidad FROM carrito WHERE idproducto=$producto");
+
+       if($existe->rowCount()>=1){
+          $existe=$existe->fetch(PDO::FETCH_ASSOC);
+             $cantidadCarrito= $existe['cantidad'];
+           $nuevaCantidad=$cantidad + $cantidadCarrito;  
+         
+         $modificar=ejecutar_consulta_simple("UPDATE carrito SET cantidad=$nuevaCantidad WHERE idproducto=$producto");
+
+       }else{
+
+
+        $datosProducto=[
+            "producto"=>$producto,
+            "cantidad"=>$cantidad,
+       ];
+
+    $addCarrito=carritoModelo::agregar_carritoModelo($datosProducto);
              if($addCarrito->rowCount()>=1){
              echo "Añadido";
               
+
+
                 }else{
                echo "error al añadir";
-                  
+
                 }
       
 
+
+       }
+
+   }
+             
+
+  
 
 }
 

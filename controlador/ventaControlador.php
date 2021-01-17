@@ -89,13 +89,24 @@ class ventaControlador extends ventaModelo{
 
          $addDetalleVenta=ventaModelo::agregar_DetalleventaModelo($datosDetalleVenta);
              if($addDetalleVenta->rowCount()>=1){
-
-
-             $fecha= date('Y-n-j');
-             $movimiento=1;
-             $descripcion="Venta de producto";
-             $idPro=$row['idproducto'];
+               $idPro=$row['idproducto'];
+               $cantidad=$row['cantidad'];
               
+             $stockExistente=ejecutar_consulta_simple("SELECT stock FROM producto WHERE idproducto=$idPro");
+             $stockExistente=$stockExistente->fetch(PDO::FETCH_ASSOC);
+             $stockActual= $stockExistente['stock'];
+
+             $nuevoStock=$stockActual- $cantidad;
+
+             $StockNuevo = ejecutar_consulta_simple("UPDATE producto SET stock=$nuevoStock WHERE idproducto =$idPro ");
+
+            $limpiarCarrito=ejecutar_consulta_simple("DELETE FROM carrito");        
+
+//AGREGAR KARDEX
+            /* $fecha= date('Y-n-j');
+             $movimiento=2;
+             $descripcion="Venta de producto";
+            
     $registroKardex=ejecutar_consulta_simple("SELECT k.cantidades , k.vtotales FROM kardex AS k WHERE k.idproductos=$idPro");
      $registroKardex=$registroKardex->fetch(PDO::FETCH_ASSOC);
         $CantidadesKardex= $registroKardex['cantidades'];
@@ -121,11 +132,11 @@ class ventaControlador extends ventaModelo{
                 $addKardex=ventaModelo::agregar_KardexVentaModelo($kardex);
 
                   if($addKardex->rowCount()>=1){
-                  	echo "kardex agregada";
+                    echo "kardex agregada";
                   }else{
                     echo "falla al agregar kardex";
-                  }
-           //  echo "detalle agregado";
+                  }*/
+
  
                 }else{
              //  echo "error al registrar detalle venta";
@@ -151,6 +162,11 @@ class ventaControlador extends ventaModelo{
 
    public function mostrarVenta(){
 
+    $datos=ventaModelo::mostrar_ventaModelo();
+            $datos=$datos->fetchAll(PDO::FETCH_ASSOC);
+       $data=json_encode($datos, JSON_UNESCAPED_UNICODE);
+       print  $data;
+   
    }
 
 }

@@ -1,4 +1,51 @@
 
+//MOSTRAR DATOS EN TABLA
+ tablaCargos = $('#tableVenta').DataTable({  
+    language: {
+      processing: "Tratamiento en curso...",
+      search: "Buscar:",
+      lengthMenu: " Datos a mostrar _MENU_ Registros",
+      info: "Mostrando los registros del _START_ al _END_ de un total de _TOTAL_ registros",
+      infoEmpty: "No existen datos.",
+      infoFiltered: "(filtrado de _MAX_ elementos en total)",
+      infoPostFix: "",
+      loadingRecords: "Cargando...",
+      zeroRecords: "No se encontraron datos con tu busqueda",
+      emptyTable: "No hay datos disponibles en la tabla.",
+      paginate: {
+          first: "Primero",
+          previous: "Anterior",
+          next: "Siguiente",
+          last: "Ultimo"
+      },
+      aria: {
+          sortAscending: ": active para ordenar la columna en orden ascendente",
+          sortDescending: ": active para ordenar la columna en orden descendente"
+      }
+  },
+    "aoColumnDefs": [ { "sClass": "hide_me", "aTargets": [ 0 ] } ],
+    "lengthMenu": [ [5,10, 25, 50, -1], [5,10, 25, 50, "All"] ],
+    "ajax":{            
+        "url": "../controlador/ventaControlador.php", 
+        "method": 'POST', //usamos el metodo POST
+       "data":"", //enviamos opcion 4 para que haga un SELECT
+        "dataSrc":""
+    },
+    
+   "columns":[
+        {"data": "idventa"},
+        {"data": "codigo"},
+        {"data": "empleado"},
+        {"data": "cliente"},
+        {"data": "fecha"},
+        {"data": "subtotal"}
+        ]
+}); 
+
+ 
+
+
+
 //seleccionar tipo de venta
 $("#selecTipoVenta").submit(function (e) {
    e.preventDefault();
@@ -14,12 +61,26 @@ $("#selecTipoVenta").submit(function (e) {
       );
    }else{
 
-     if(tipoVenta==="Contado"){
-        window.location.replace("http://localhost/SistemaFinanciero/ventaContado/");
-     }else{
-         window.location.replace("http://localhost/SistemaFinanciero/ventaCredito/");
-     }
- 
+    let verificar=2;
+
+let url = "../controles/carrito.php";
+      $.post(url,{verificar}, function (response) {
+        
+         if(response.trim()==="Carrito"){
+           if(tipoVenta==="Contado"){
+                  window.location.replace("http://localhost/SistemaFinanciero/ventaContado/");
+               }else{
+                   window.location.replace("http://localhost/SistemaFinanciero/ventaCredito/");
+               }
+           
+         }else{
+           Swal.fire("Error","El carrito se encuentra vacio no puede realizar una venta","error");
+         }
+
+
+      });
+
+    
 
    }
 
@@ -71,6 +132,12 @@ $("#form-ventaContado").submit(function (e) {
               let url='../controlador/ventaControlador.php';
          $.post(url,{producto},function(respuesta){
               console.log(respuesta);
+
+               $('#idCl').val("");
+              $('#nombreCli').val("");
+               numCarrito();
+               numFactura();
+                 Swal.fire("Registrado","La venta ha sido registrada","success");
            
          });   
       }

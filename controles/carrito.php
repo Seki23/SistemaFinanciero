@@ -2,11 +2,28 @@
 require_once  "../core/conexion.php";
 
 
-     if(isset($_POST['buscar'])){
+  if(isset($_POST['verificar'])){
 
-$carrito='';
-$pieCarrito='';
-   $consulta="SELECT p.nombreproducto,p.imagen,c.cantidad FROM carrito AS c INNER JOIN producto AS p ON c.idproducto = p.idproducto";
+   $consulta2="SELECT * FROM carrito";
+            $conexion2=conectar();
+               $datos2=$conexion2->query($consulta2);
+              $datos2=$datos2->fetch(PDO::FETCH_ASSOC);
+              
+              if($datos2>=1){
+                echo "Carrito";
+              }else{
+                 
+                 echo "Vacio";
+              }
+
+
+     }else{
+
+ if(isset($_POST['buscar'])){
+
+    $carrito='';
+    $pieCarrito='';
+       $consulta="SELECT p.nombreproducto,p.imagen,c.cantidad FROM carrito AS c INNER JOIN producto AS p ON c.idproducto = p.idproducto";
             $conexion=conectar();
                $datos=$conexion->query($consulta);
                $datos=$datos->fetchAll();
@@ -54,6 +71,9 @@ $pieCarrito='';
 
             echo $Num;
     }
+
+
+}
 
    
 

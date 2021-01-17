@@ -56,7 +56,7 @@
                     <li><a href="<?php echo SERVERURL; ?>tablaProductos/">Productos</a></li>
                     <li><a href="<?php echo SERVERURL; ?>tablaProveedor/">Proveedor</a></li>
                     <li><a href="<?php echo SERVERURL; ?>tablaCompras/">Compras</a></li>
-                    <li><a href="<?php echo SERVERURL; ?>catalogoProducto/">Venta</a></li>
+                    <li><a href="<?php echo SERVERURL; ?>tablaVenta/">Venta</a></li>
                   </ul>
                 </li>
                 <li><a><i class="fa fa-building"></i>Activo fijo<span class="fa fa-chevron-down"></span></a>
@@ -125,7 +125,7 @@
             <li><a href="typography.html">Productos</a></li>
             <li><a href="media_gallery.html">Proveedor</a></li>
             <li><a href="media_gallery.html">Compras</a></li>
-            <li><a href="typography.html">Venta</a></li>
+            <li><a href="<?php echo SERVERURL; ?>tablaVenta/">Venta</a></li>
           </ul>
         </li>
 
