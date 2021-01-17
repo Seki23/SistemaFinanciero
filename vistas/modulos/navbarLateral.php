@@ -55,7 +55,7 @@
                     <li><a href="<?php echo SERVERURL; ?>tablaCategoriaProducto/">Categoria producto</a></li>
                     <li><a href="<?php echo SERVERURL; ?>tablaProductos/">Productos</a></li>
                     <li><a href="<?php echo SERVERURL; ?>tablaProveedor/">Proveedor</a></li>
-                    <li><a href="media_gallery.html">Compras</a></li>
+                    <li><a href="<?php echo SERVERURL; ?>tablaCompras/">Compras</a></li>
                     <li><a href="<?php echo SERVERURL; ?>catalogoProducto/">Venta</a></li>
                   </ul>
                 </li>

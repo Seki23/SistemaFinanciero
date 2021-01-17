@@ -88,11 +88,11 @@
                          <div class="field item form-group">
                            <label class="col-form-label col-md-3 col-sm-3  label-align">Categoria<span class="required">*</span></label>
                            <div class="col-md-6 col-sm-6">
-                             <select id="commboCategoriaPro" name="commboCategoriaPro" class="form-control select">
+                             <select id="commboCategoriaPro" name="commboCategoriaPro" class="form-control select" disabled="">
  
                             </select>
                            </div>
-                           <div class="form-group">
+                           <!--<div class="form-group">
                             <div class="input-group" style="left:-13px; top: -7px; margin-bottom: -33px;">
                               <button id="cambiarCateg" class="btn btn-" type="button">
                                 <div class="input-group-prepend">
@@ -101,7 +101,7 @@
                                 </div>
                               </button>
                             </div>
-                          </div>
+                          </div>-->
                          </div>
 
                             <div class="field item form-group">

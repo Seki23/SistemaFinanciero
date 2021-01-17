@@ -276,7 +276,7 @@ $(document).on('click','.editProd',function(){
       if (result.isConfirmed) { 
             
      let formData = new FormData($("#form-productoM")[0]);
-            
+     formData.append("commboCategoriaPro", $("#commboCategoriaPro").val());       
             $.ajax({
               url: "../controlador/productoControlado.php",
               type: "POST",
