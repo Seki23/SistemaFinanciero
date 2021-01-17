@@ -55,9 +55,80 @@
         },
       },
         {data: "estado"},
-        {"defaultContent": "<div class='text-center'><div class='btn-group'> <button  class=' debajaProd btn btn-primary'><span class='fa fa-sort-desc'></span></button><button class='editProd btn btn-warning ' ><span class='fa fa-pencil'></span></button>  </div></div>"}
+        {"defaultContent": "<div class='text-center'><div class='btn-group'><button  class='verKardex btn btn-success'><span class='fa fa-eye'></span></button> <button  class=' debajaProd btn btn-primary'><span class='fa fa-sort-desc'></span></button><button class='editProd btn btn-warning ' ><span class='fa fa-pencil'></span></button>  </div></div>"}
     ]
 });
+
+
+
+$(document).on('click','.verKardex',function(){
+
+ // let element= $(this)[0].parentElement.parentElement;
+let fila = $(this).closest("tr"); 
+  let id= parseInt(fila.find('td:eq(0)').text()); 
+
+
+            window.location.replace("http://localhost/SistemaFinanciero/kardex/?"+id+"");
+          //  mostrarKardex();
+ 
+
+});
+
+ mostrarKardex();
+function mostrarKardex(){
+// alert("hola");
+  let id=$('#verKardex').val();
+   $.post('../controles/kardex.php',{id},function(response){
+      
+          console.log(response);
+      let productos = JSON.parse(response);
+
+
+
+      let template = '  <tr class="active"><td></td><td></td><td class="warning">Unidades</td><td class="danger">V.Unitario</td><td class="info">V.Total</td><td class="warning">Unidades</td><td class="danger">V.Unitario</td><td class="info">V.Total</td><td class="warning">Unidades</td><td class="danger">V.Unitario</td><td class="info">V.Total</td></tr>';
+      productos.forEach((producto) => {
+
+
+           template += ` <tr>
+                                      <td>${producto.fecha}</td>
+                                      <td>${producto.descripcion}</td>
+                                 `;
+
+      if(producto.movimiento==1){
+        template += `     
+                                      <td>${producto.cantidad}</td>
+                                      <td>${producto.vunitario}</td>
+                                      <td>${producto.totalt}</td>
+                                      <td>0</td>
+                                      <td>0</td>
+                                      <td>0</td>
+                                      <td>${producto.cantidades}</td>
+                                      <td>${producto.vunitario}</td>
+                                      <td>${producto.vtotales}</td>
+                                   </tr> ` ;
+      }else{
+        template +=   `      
+                                      <td>0</td>
+                                      <td>0</td>
+                                      <td>0</td>
+                                      <td>${producto.cantidad}</td>
+                                      <td>${producto.vunitario}</td>
+                                      <td>${producto.totalt}</td>
+                                      <td>${producto.cantidades}</td>
+                                      <td>${producto.vunitario}</td>
+                                      <td>${producto.vtotales}</td>
+                                   </tr> ` ;
+      }
+
+     
+      });
+      $("#tabla-kardex").html(template);
+     
+  
+  });
+
+
+}
 
  //guardar
 $('#form-producto').submit(function(e){
@@ -328,3 +399,4 @@ $(document).on('click','.editProd',function(){
 
    });
      
+

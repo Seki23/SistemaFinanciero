@@ -25,3 +25,7 @@
 <script type="text/javascript" src="<?php echo SERVERURL; ?>ajax/categoria.js"></script> 
 <script type="text/javascript" src="<?php echo SERVERURL; ?>ajax/provee.js"></script>
 <script type="text/javascript" src="<?php echo SERVERURL; ?>ajax/producto.js"></script> 
+
+<script type="text/javascript" src="<?php echo SERVERURL; ?>ajax/carrito.js"></script> 
+<script type="text/javascript" src="<?php echo SERVERURL; ?>ajax/venta.js"></script> 
+<script type="text/javascript" src="<?php echo SERVERURL; ?>ajax/seleccionarCliente.js"></script>  

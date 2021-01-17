@@ -27,7 +27,7 @@ if($accion==1){
 
 }else{
    
-    $consulta="SELECT dp.iddepartamento, dp.nombre FROM departamento AS dp";
+    $consulta="SELECT dp.iddepartamento, dp.nombredepartamento FROM departamento AS dp";
 
     $conexion=conectar();
      $datos=$conexion->query($consulta);
@@ -35,7 +35,7 @@ if($accion==1){
      if($datos>=1){
   foreach($datos as $row){
     $json[]=array(
-        'departamento'=>$row['nombre'],
+        'departamento'=>$row['nombredepartamento'],
         'id'=>$row['iddepartamento']
     );
   }
