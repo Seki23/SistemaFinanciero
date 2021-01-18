@@ -35,4 +35,19 @@ class comprasModelo{
          return $query;
      }
 
+     protected function agregar_KardexComprasModelo($datos){
+        $sql=conectar()->prepare("INSERT INTO kardex( idproductos, fecha, descripcion, movimiento, cantidad,vunitario,cantidades, vtotales) VALUES ( :producto, :fecha, :descripcion, :movimiento, :cantidad,:precio,:cantidades, :total)");
+
+        $sql->bindParam(":fecha",$datos['fecha']);
+        $sql->bindParam(":producto",$datos['producto']);
+        $sql->bindParam(":descripcion",$datos['descripcion']);
+        $sql->bindParam(":movimiento",$datos['movimiento']);
+        $sql->bindParam(":cantidad",$datos['cantidad']);
+        $sql->bindParam(":precio",$datos['precio']);
+        $sql->bindParam(":cantidades",$datos['cantidades']);
+        $sql->bindParam(":total",$datos['total']);
+        $sql->execute();
+        return $sql;
+     }
+
 }

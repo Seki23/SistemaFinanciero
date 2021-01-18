@@ -38,8 +38,7 @@
                           <th class="column-title text-center">Descripcion</th> 
                           <th class="column-title text-center">Imagen</th>
                           <th class="column-title text-center">Cantidad</th> 
-                          <th class="column-title text-center">Precio de la compra</th>                     
-                          <th class="column-title no-link last"><em class="fa fa-cog"></em></th>
+                          <th class="column-title text-center">Precio de la compra</th>
                         </tr>
                       </thead>
                       <tbody>

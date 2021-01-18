@@ -91,7 +91,7 @@
                                         <div class="field item form-group">
                                             <label class="col-form-label col-md-3 col-sm-3  label-align">Margen de ganancia<span class="required">*</span></label>
                                             <div class="col-md-6 col-sm-6">
-                                                <input class='form-control optional' type="number" id="margenProd" name="margenProd" class='sal' required='required' placeholder="" /></div>
+                                                <input class='form-control optional' type="number" id="margenProd" name="margenProd" class='sal' required='required' placeholder="" onclick="calculandoPV()" /></div>
                                         </div>
 
                                         <div class="field item form-group">
@@ -302,5 +302,31 @@
                clearTimeout(timeout1);
         }, 250);
     });
+
+
+    function calculandoPV(){
+      let preciocompra=document.getElementById('precioCp');
+    let comentdos=document.getElementById("margenProd");
+    let margenganancia=document.getElementById('margenProd');
+    let precioventa;
+    let calculo;
+    let timeout1;
+
+
+            if(preciocompra.value=='' && margenganancia.value==''){
+            //no hacer nada
+            }else{
+                let porcentaje=(margenganancia.value/100);
+                 calculo=preciocompra.value*porcentaje;
+                 precioventa=parseInt(preciocompra.value,10)+parseInt(calculo,10);
+                 //console.log("calculo "+calculo);
+                 //console.log("el precio venta es "+precioventa);
+                 document.getElementById("precioVp").value=precioventa;
+                  
+                   document.getElementById("precioVp").disabled=true;
+            }
+         
+
+    }
     
 </script>
