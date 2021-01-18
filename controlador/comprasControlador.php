@@ -51,11 +51,13 @@ class compraControlador extends comprasModelo{
      	 echo gettype($Ultimo);
      	
    		//echo $Ultimo;
+        $FechaActual=date("Y-m-d");
 
    		     $data = json_decode($_POST['data'],true);
 			    foreach ($data as $v) {
 			        $datosdetalleComp=[
 			        	"preciocomp"=> $v['total'],//precio compra
+			        	"preciuni"=> $v['precio'],//precio unitario
 			            "cantidad"=> $v['cantidad'],
 			            "idproducto"=>$v['nomprodu'],
 			            "idcompra"=>$Ultimo
@@ -64,6 +66,7 @@ class compraControlador extends comprasModelo{
 			           //obteniendo los valores que viene por el meotodo post
 			           $idproducto= $datosdetalleComp['idproducto'];
      	 			   $cantidad=$datosdetalleComp['cantidad'];
+     	 			   $preciounitaripro=$datosdetalleComp['preciuni'];
      	 			  
 
      	 			   //obtener el stokc de productos que se selecciona al guardar
@@ -76,7 +79,21 @@ class compraControlador extends comprasModelo{
 
 			          $guardardetalleComp=comprasModelo::agregar_detallecomprasModelo($datosdetalleComp);
 
-			          // echo "<h1>Suma del estock</h1>". $NuevoStock."<br>";
+			          $nuvoTotal=($NuevoStock*$preciounitaripro);
+			          //obteniendo los datos para guarar en kardex
+			          $datosKardex=[
+					        "fecha"=>$FechaActual,
+					        "producto"=>$idproducto,
+					        "descripcion"=>'Compra de producto',
+					        "movimiento"=>'1',
+					        "cantidad"=>$cantidad,
+					        "precio"=>$preciounitaripro,
+					        "cantidades"=>$NuevoStock,
+					        "total"=>$nuvoTotal,
+					   ];
+
+
+			         //echo "<h1>Precio unitario</h1>". $preciounitaripro."<br>";
 			          if($guardardetalleComp->rowCount()>=1){
 			          	 echo $Ultimo;
 			             echo "registrado detallecompra";
@@ -84,6 +101,15 @@ class compraControlador extends comprasModelo{
 			             $actualizar=ejecutar_consulta_simple("UPDATE producto SET stock='$NuevoStock' WHERE idproducto='$idproducto'");
 			             if($actualizar->rowCount()>=1){
 			             	echo "se actulizo el stock";
+
+             
+			             	$guardarKardex=comprasModelo::agregar_KardexComprasModelo($datosKardex);
+			             	if($guardarKardex->rowCount()>=1){
+			             		echo "se guargo kardex";
+			             	}else{
+			             		echo "erro no se guargo la kardex";
+			             	}
+
 			             }else{
 			             	echo "no se puro actulizar el stock";
 			             }
