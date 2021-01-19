@@ -30,7 +30,7 @@
                                         <label class="col-form-label col-md-3 col-sm-3  label-align">Empleado<span class="required">*</span></label>
                                         <div class="col-md-6 col-sm-6">
                                         <input type="hidden" class="form-control" id="idE"  placeholder="" disabled="">
-                                        <input type="text" class="form-control"   id="nombreE" placeholder="Agregar especialista" disabled="">
+                                        <input type="text" class="form-control"   id="nombreE" placeholder="Agregar Empleado" disabled="">
                                         <button id="busEmpleado" class="btn btn-" type="button" style="margin-left:-13px;" data-toggle="modal" data-target="#ModalEmpleado">  
                                                 <div class="input-group-prepend">
                                                 <span class="input-group-text"><span class='fa fa-plus'></span>Añadir</i></span>

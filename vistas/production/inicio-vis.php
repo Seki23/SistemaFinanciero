@@ -35,27 +35,70 @@ if($cargo =="Administrador"){
                     }
                 ?>
             <div class="count"><?php echo $num; ?></div>
-              <span class="count_bottom"><i class="green"></i>Ventas de la empresa</span>
+              <span class="count_bottom"><i class="green"></i>Ventas</span>
             </div>
             <div class="col-md-2 col-sm-4  tile_stats_count">
-              <span class="count_top"><i class="fa fa-clock-o"></i> Average Time</span>
-              <div class="count">123.50</div>
-              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>3% </i> From last Week</span>
+              <span class="count_top"><i class="fa fa-shopping-cart"></i>Compras Totales</span>
+
+                 <?php 
+                  //  include "./core/conexion.php";
+                    $consulta  = ejecutar_consulta_simple("SELECT COUNT(idcompra) as numCompra FROM compra");
+                    if($consulta->rowCount()>=1){
+                      $consulta=$consulta->fetch(PDO::FETCH_ASSOC);
+                      $numC=$consulta['numCompra'];
+                   }else{
+                       $numC="error";
+                    }
+                ?>
+
+              <div class="count"><?php echo $numC; ?></div>
+              <span class="count_bottom"><i class="green"></i>Compras </span>
             </div>
             <div class="col-md-2 col-sm-4  tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Total Males</span>
-              <div class="count green">2,500</div>
-              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
+              <span class="count_top"><i class="fa fa-user"></i>Clientes</span>
+               <?php 
+                  //  include "./core/conexion.php";
+                    $consulta  = ejecutar_consulta_simple("SELECT COUNT(idcliente) as numCliente FROM clientes");
+                    if($consulta->rowCount()>=1){
+                      $consulta=$consulta->fetch(PDO::FETCH_ASSOC);
+                      $numCl=$consulta['numCliente'];
+                   }else{
+                       $numCl="error";
+                    }
+                ?>
+               
+              <div class="count "><?php echo $numCl; ?></div>
+              <span class="count_bottom">Clientes registrados</span>
             </div>
             <div class="col-md-2 col-sm-4  tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Total Females</span>
-              <div class="count">4,567</div>
-              <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>12% </i> From last Week</span>
+              <span class="count_top"><i class="fa fa-money"></i>Ingresos</span>
+                <?php 
+                  //  include "./core/conexion.php";
+                    $consulta  = ejecutar_consulta_simple("SELECT sum(detalleventa.precioventa) as total FROM detalleventa");
+                    if($consulta->rowCount()>=1){
+                      $consulta=$consulta->fetch(PDO::FETCH_ASSOC);
+                      $numVenta=$consulta['total'];
+                   }else{
+                       $numVenta="error";
+                    }
+                ?>
+              <div class="count">$<?php echo $numVenta; ?></div>
+              <span class="count_bottom"> Total en Ventas</span>
             </div>
             <div class="col-md-2 col-sm-4  tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Total Collections</span>
-              <div class="count">2,315</div>
-              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
+              <span class="count_top"><i class="fa fa-money"></i>Egresos</span>
+                <?php 
+                  //  include "./core/conexion.php";
+                    $consulta  = ejecutar_consulta_simple("SELECT sum(detallecompra.preciocompra) as totalC FROM detallecompra");
+                    if($consulta->rowCount()>=1){
+                      $consulta=$consulta->fetch(PDO::FETCH_ASSOC);
+                      $numCompra=$consulta['totalC'];
+                   }else{
+                       $numCompra="error";
+                    }
+                ?>
+              <div class="count">$<?php echo $numCompra; ?></div>
+              <span class="count_bottom">Total en Compras</span>
             </div>
             <div class="col-md-2 col-sm-4  tile_stats_count">
               <span class="count_top"><i class="fa fa-user"></i> Total Connections</span>

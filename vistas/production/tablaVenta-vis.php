@@ -34,8 +34,11 @@
                           <th>Codigo</th>
                           <th>Empleado</th>
                           <th>Cliente</th>
-                          <th>Fecha de venta</th>
+                          <th>Fecha</th>
+                          <th>sub Total</th>
+                           <th>IVA</th>
                           <th>Total</th>
+                          <th>Acciones</th>
                         </tr>
                       </thead>
                       <tbody>

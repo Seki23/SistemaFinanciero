@@ -148,13 +148,13 @@
                             <div class="field item form-group">
                                 <label class="col-form-label col-md-3 col-sm-3  label-align">Margen de ganancia<span class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6">
-                                    <input class="form-control" type="number" id="margenProdM" name="margenProdM" class='sal' required='required' onclick="calculandoPV()" /></div>
+                                    <input class="form-control" type="number" id="margenProdM" name="margenProdM" class='sal' required='required'  /></div>
                             </div>
 
                             <div class="field item form-group">
                                 <label class="col-form-label col-md-3 col-sm-3  label-align">Precio de venta<span class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6">
-                                    <input class="form-control" type="number" id="precioVpM" name="precioVpM" class='sal' required='required' data-validate-length-range="2,10" disabled="" /></div>
+                                    <input class="form-control" type="number" id="precioVpM" name="precioVpM" class='sal' required='required' data-validate-length-range="2,10" /></div>
                             </div>
 
                             <div class="field item form-group">
@@ -199,65 +199,5 @@
 
 
         <!-- /page content -->
-
- <script> 
-    
-    let preciocompra=document.getElementById('precioCpM');
-    let comentdos=document.getElementById("margenProdM");
-    let margenganancia=document.getElementById('margenProdM');
-    let precioventa;
-    let calculo;
-    let timeout1;
-
-    comentdos.addEventListener("keydown",function(){
-        clearTimeout(timeout1);
-        console.log("lleva"+preciocompra.value);
-        timeout1 = setTimeout(() => {
-            if(preciocompra.value=='' && margenganancia.value==''){
-            //no hacer nada
-            }else{
-                let porcentaje=(margenganancia.value/100);
-                 calculo=preciocompra.value*porcentaje;
-                 precioventa=parseInt(preciocompra.value,10)+parseInt(calculo,10);
-                 //console.log("calculo "+calculo);
-                 //console.log("el precio venta es "+precioventa);
-                 document.getElementById("precioVpM").value=precioventa;
-                  
-                   document.getElementById("precioVpM").disabled=true;
-            }
-               clearTimeout(timeout1);
-        }, 250);
-    });
-
-    function calculandoPV(){
-      let preciocompra=document.getElementById('precioCpM');
-    let comentdos=document.getElementById("margenProdM");
-    let margenganancia=document.getElementById('margenProdM');
-    let precioventa;
-    let calculo;
-    let timeout1;
-
- 
-        //clearTimeout(timeout1);
-        //console.log("lleva"+preciocompra.value);
-        
-            if(preciocompra.value=='' && margenganancia.value==''){
-            //no hacer nada
-            }else{
-                let porcentaje=(margenganancia.value/100);
-                 calculo=preciocompra.value*porcentaje;
-                 precioventa=parseInt(preciocompra.value,10)+parseInt(calculo,10);
-                 //console.log("calculo "+calculo);
-                 //console.log("el precio venta es "+precioventa);
-                 document.getElementById("precioVpM").value=precioventa;
-                  
-                  // document.getElementById("precioVpM").disabled=true;
-            }
-      
-  
-    }
-    
-</script>
-       
 
       

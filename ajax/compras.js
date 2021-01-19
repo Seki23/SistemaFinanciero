@@ -56,7 +56,14 @@
           return '$'+data.preciocompra;
 
       } },
-   
+      {
+        defaultContent:
+          '<div class="text-center"><div class="btn-group"><td><button type="button" class="btn btn-info boton btnCar" data-toggle="modal" data-target="#Modaldetalle"><i class="fas fa-eye"></i></button></td></div></div>',
+      },
+      /*{
+        defaultContent:
+          '<div class="text-center"><div class="btn-group"><td align="center"><button type="button" class="btn btn-danger boton btnRemoveDe"><i class="fas fa-trash-alt Danger"></i></button> <button type="submit" class="btn btn-warning boton btnEditDe"><i class="far fa-edit"></i></button> </td> </div></div>',
+      },*/
     ],
   });
 

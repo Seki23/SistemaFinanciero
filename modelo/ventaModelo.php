@@ -47,8 +47,8 @@ class ventaModelo {
 
 
      protected function mostrar_ventaModelo(){
-        $query=conectar()->prepare("SELECT v.idventa,v.codigo,empleado.nombre AS empleado,clientes.nombrecliente AS cliente,v.fecha,( SELECT SUM( dv.cantidad * dv.precioventa ) AS total FROM detalleventa AS dv WHERE dv.idventa = v.idventa ) AS subtotal FROM venta AS v INNER JOIN empleado ON v.idempleado = empleado.idempleado
-           INNER JOIN clientes ON v.idcliente = clientes.idcliente");
+        $query=conectar()->prepare("SELECT v.idventa,v.codigo,empleado.nombre AS empleado,clientes.nombrecliente AS cliente,v.fecha,( SELECT SUM( dv.cantidad * dv.precioventa ) AS total FROM detalleventa AS dv WHERE dv.idventa = v.idventa ) AS subtotal, ((SELECT SUM( dv.cantidad * dv.precioventa ) AS total FROM detalleventa AS dv WHERE dv.idventa = v.idventa)*0.13)AS iva,(( SELECT SUM( dv.cantidad * dv.precioventa ) AS total FROM detalleventa AS dv WHERE dv.idventa = v.idventa )+(SELECT SUM( dv.cantidad * dv.precioventa ) AS total FROM detalleventa AS dv WHERE dv.idventa = v.idventa)*0.13) AS total  FROM venta AS v INNER JOIN empleado ON v.idempleado = empleado.idempleado
+           INNER JOIN clientes ON v.idcliente = clientes.idcliente ");
         $query->execute();
         return $query;
    }

@@ -38,11 +38,31 @@
         {"data": "empleado"},
         {"data": "cliente"},
         {"data": "fecha"},
-        {"data": "subtotal"}
+        {"data": "subtotal"},
+        {"data": "iva"},
+        {"data": "total"},
+        {"defaultContent": "<div class='text-center'><div class='btn-group'> <button  class=' verFactura btn btn-primary'><span class='fa fa-eye'></span></button> </div></div>"}
         ]
 }); 
 
  
+
+//boton ver reporte
+  $(document).on("click", ".verFactura", function () {
+    let fila = $(this).closest("tr");
+    let id = parseInt(fila.find("td:eq(0)").text());
+    let pagina = "../vistas/production/factura-vis.php";
+    pasarVariables(pagina, id);
+  });
+
+ function pasarVariables(pagina, id) {
+    pagina += "?";
+    nomVec = id;
+    pagina += nomVec;
+    pagina = pagina.substring();
+    window.open(pagina, '_blank');
+   // location.href = ;
+  }
 
 
 
